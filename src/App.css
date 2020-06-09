@@ -27,7 +27,17 @@
 .App-link {
   color: #61dafb;
 }
+.searchinput {
+  margin-top: 15px;
+  width: 300px;
+}
 
+.searchbutton {
+  color:white;
+  font-style: oblique;
+  background-color: purple;
+  
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -9,6 +9,11 @@ function App() {
         <h2>
           List of the most starred repositories on Github
         </h2>
+        <div >
+            <input className= 'searchinput' placeholder=" Find a repo"></input>
+            <button className="searchbutton" value= "SEARCH">SEARCH</button>
+            
+        </div>
         
       </header>
       <Result/>
