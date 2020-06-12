@@ -5,4 +5,3 @@ const getDate = () => {
   }
   
   export default getDate;
-  

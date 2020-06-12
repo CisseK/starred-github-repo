@@ -5,4 +5,3 @@ const optimizeHeadersTitle = (title) => {
   }
   
   export default optimizeHeadersTitle;
-  

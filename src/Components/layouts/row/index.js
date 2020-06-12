@@ -1,5 +1,6 @@
 import React from "react";
 
+import './row.scss';
 
 const Row = (props) => 
   <div className="row">

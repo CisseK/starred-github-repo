@@ -1,23 +1,24 @@
 import React from 'react';
 import './App.css';
-import Result from './Component/Result';
+import Page from './components/layouts/page/index';
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index';
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>
-          List of the most starred repositories on Github
-        </h2>
-        <div >
-            <input className= 'searchinput' placeholder=" Find a repo"></input>
-            <button className="searchbutton" value= "SEARCH">SEARCH</button>
-            
-        </div>
-        
-      </header>
-      <Result/>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Route exact path="/" component={Page} />
+      </Router>
+    </Provider>
   );
 }
 

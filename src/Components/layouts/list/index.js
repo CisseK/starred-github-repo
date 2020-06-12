@@ -1,17 +1,17 @@
-
-import { fetchRepos } from './FetchRepo';
-import React, {Component} from "react";
 import { connect } from 'react-redux';
-import Row from './Row';
-import getLinks from './Liens';
-import getDate from './Date';
-import abrNumber from './abrNumber';
-import optimizeHeadersTitle from './optTitle';
-/*var moment = require('moment');*/
+import { fetchRepos } from '../../../actions/actions';
+import React, {Component} from "react";
+import Row from '../row/index';
+import './list.scss';
+import abbreviateNumber from './abbreviateNumber';
+import getLinks from './getLinks';
+import getDate from './getDate';
+import optimizeHeadersTitle from './optimizeHeadersTitle';
+var moment = require('moment');
 
 const default_url = "https://api.github.com/search/repositories?q=created:>" + getDate() + "&sort=stars&order=desc";
 
-class Result extends Component {
+class List extends Component {
 
   componentDidMount(url = default_url) {
     this.props.fetchRepos(url);
@@ -28,9 +28,9 @@ class Result extends Component {
               avatar={item.owner.avatar_url}
               title={item.name} 
               description={item.description}
-              stars={abrNumber(item.stargazers_count)}
-              issues={abrNumber(item.open_issues_count)}
-              date={(item.created_at, "YYYYMMDD").fromNow()}
+              stars={abbreviateNumber(item.stargazers_count)}
+              issues={abbreviateNumber(item.open_issues_count)}
+              date={moment(item.created_at, "YYYYMMDD").fromNow()}
               owner={item.owner.login}
             />
           )
@@ -60,5 +60,4 @@ const mapStateToProps = (state) => ({
   repos: state.repos,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Result);
-
+export default connect(mapStateToProps, mapDispatchToProps)(List);

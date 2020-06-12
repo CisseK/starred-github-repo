@@ -9,5 +9,4 @@ const getLinks = (link) => {
     return urls;
   }
   
-  export default getLinks
-  
+  export default getLinks;
